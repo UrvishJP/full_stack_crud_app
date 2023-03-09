@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+import { useAuth } from '../context/AuthContext'
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [isLoggingIn, setIsLoggingIn] = useState(true)
+
+  const { login, signup, currentUser } = useAuth()
+  console.log(currentUser)
 
   async function submitHandler() {
     if (!email || !password) {
