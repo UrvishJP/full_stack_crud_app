@@ -76,12 +76,6 @@ export default function UserDashboard() {
                         [todoKey]: deleteField()
                     }
                 }, { merge: true });
-    
-                MySwal.fire(
-                    'Deleted!',
-                    'Your QuickNote has been deleted.',
-                    'success'
-                );
             }
         }
     }
