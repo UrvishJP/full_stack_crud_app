@@ -55,7 +55,6 @@ export default function UserDashboard() {
     function handleDelete(todoKey) {
         return async () => {
             const result = await MySwal.fire({
-                title: 'Are you sure?',
                 text: "Do you really want to delete this QuickNote?",
                 icon: 'warning',
                 showCancelButton: true,
