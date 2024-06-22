@@ -4,6 +4,10 @@ import TodoCard from './TodoCard'
 import { doc, setDoc, deleteField } from 'firebase/firestore'
 import { db } from '../firebase'
 import useFetchTodos from '../hooks/fetchTodos'
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+const MySwal = withReactContent(Swal);
 
 export default function UserDashboard() {
     const { userInfo, currentUser } = useAuth()
@@ -51,17 +55,35 @@ export default function UserDashboard() {
 
     function handleDelete(todoKey) {
         return async () => {
-            const tempObj = { ...todos }
-            delete tempObj[todoKey]
-
-            setTodos(tempObj)
-            const userRef = doc(db, 'users', currentUser.uid)
-            await setDoc(userRef, {
-                'todos': {
-                    [todoKey]: deleteField()
-                }
-            }, { merge: true })
-
+            const result = await MySwal.fire({
+                title: 'Are you sure?',
+                text: "Do you really want to delete this QuickNote?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!'
+            });
+    
+            if (result.isConfirmed) {
+                const tempObj = { ...todos };
+                delete tempObj[todoKey];
+    
+                setTodos(tempObj);
+    
+                const userRef = doc(db, 'users', currentUser.uid);
+                await setDoc(userRef, {
+                    'todos': {
+                        [todoKey]: deleteField()
+                    }
+                }, { merge: true });
+    
+                MySwal.fire(
+                    'Deleted!',
+                    'Your QuickNote has been deleted.',
+                    'success'
+                );
+            }
         }
     }
 
