@@ -30,19 +30,18 @@ export default function UserDashboard() {
         setTodo('')
     }
 
-    async function handleEditTodo() {
-        if (!edittedValue) { return }
+    async function handleEditTodoInline(newValue) {
+        if (!newValue) { return }
         const newKey = edit
-        setTodos({ ...todos, [newKey]: edittedValue })
+        setTodos({ ...todos, [newKey]: newValue })
         const userRef = doc(db, 'users', currentUser.uid)
         await setDoc(userRef, {
             'todos': {
-                [newKey]: edittedValue
+                [newKey]: newValue
             }
         }, { merge: true })
-        setEdit(null)
-        setEdittedValue('')
     }
+    
 
     function handleAddEdit(todoKey) {
         return () => {
@@ -100,7 +99,7 @@ export default function UserDashboard() {
                 <>
                     {Object.keys(todos).map((todo, i) => {
                         return (
-                            <TodoCard handleEditTodo={handleEditTodo} key={i} handleAddEdit={handleAddEdit} edit={edit} todoKey={todo} edittedValue={edittedValue} setEdittedValue={setEdittedValue} handleDelete={handleDelete}>
+                            <TodoCard handleEditTodoInline={handleEditTodoInline} key={i} handleAddEdit={handleAddEdit} edit={edit} todoKey={todo} edittedValue={edittedValue} setEdittedValue={setEdittedValue} handleDelete={handleDelete}>
                                 {todos[todo]}
                             </TodoCard>
                         )
