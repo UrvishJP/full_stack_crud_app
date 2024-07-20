@@ -6,7 +6,7 @@ const Footer = () => {
       <a href="https://www.linkedin.com/in/urvish-j-p/" target="_blank">
         <i className="fa-brands fa-linkedin duration-300 hover:opacity-30 cursor-pointer" />
       </a>
-      <a href="https://github.com/UrvishJP" target="_blank">
+      <a href="https://github.com/urvish-j-p" target="_blank">
         <i className="fa-brands fa-github duration-300 hover:opacity-30 cursor-pointer" />
       </a>
       <a href="https://www.instagram.com/urvish_j_p/" target="_blank">
