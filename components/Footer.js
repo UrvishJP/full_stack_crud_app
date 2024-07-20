@@ -12,10 +12,10 @@ const Footer = () => {
       <a href="https://www.instagram.com/urvish_j_p/" target="_blank">
         <i className="fa-brands fa-instagram duration-300 hover:opacity-30 cursor-pointer" />
       </a>
-      <a href="https://twitter.com/UrvishJP" target="_blank">
+      <a href="https://x.com/urvish_j_p" target="_blank">
         <i className="fa-brands fa-twitter duration-300 hover:opacity-30 cursor-pointer" />
       </a>
-      <a href="https://www.facebook.com/urvish.prajapati.167" target="_blank">
+      <a href="https://www.facebook.com/urvish.j.p" target="_blank">
         <i className="fa-brands fa-facebook duration-300 hover:opacity-30 cursor-pointer" />
       </a>
     </div>
